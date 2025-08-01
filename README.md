@@ -73,11 +73,11 @@ docker run --name mcp-server-stock -p 8008:8008 mcp-server-stock-intelligence:te
 
 Here are some options with which you can connect the test this server:
 
-#### 🤖 Use MCP inspector:
+### 🤖 Use MCP inspector:
 
 Follow the instruction under: https://modelcontextprotocol.io/legacy/tools/inspector
 
-#### 🤖 Use a client (Claude Desktop, VS COde Copilot etc.)
+### 🤖 Use a client (Claude Desktop, VS COde Copilot etc.)
 
 Most of the clients would require you to configure your server in a json format like the following:
 
@@ -113,4 +113,5 @@ Example of using sse transport
 Exact instructions for Claude desktop or VS code can be found here:
 
 📋 Claude Desktop: https://modelcontextprotocol.io/quickstart/server
+
 📋 VS Code GitHub Copilot Extention: https://code.visualstudio.com/docs/copilot/chat/mcp-servers
