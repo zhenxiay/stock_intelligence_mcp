@@ -1,0 +1,13 @@
+[project]
+name = "stock_intelligence_mcp"
+version = "0.1.0"
+authors = [{ name = "Zhenxiao Yu", email = "yu.zhenxiao.yz@gmial.com" }]
+description = "A Model Context Protocol (MCP) server which allows AI agents to interact with Yahoo Finance."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "mcp==1.9.0",
+    "typer>=0.16.0",
+    "yfinance==0.2.65",
+    "ta==0.11.0",
+    ]
