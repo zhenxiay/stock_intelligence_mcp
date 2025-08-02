@@ -67,7 +67,7 @@ cd stock_intelligence_mcp
 #### Build the Docker container
 
 ```bash
-docker build client/. -t mcp-server-stock-intelligence:test
+docker build . -t mcp-server-stock-intelligence:test -f Docker/Dockerfile
 ```
 
 #### Run the Docker container
