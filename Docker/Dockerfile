@@ -15,4 +15,4 @@ RUN uv sync
 
 EXPOSE 8008
 
-CMD ["uv","run", "main.py", "--port", "8008"]
+CMD ["uv","run", "src/main.py", "--port", "8008"]
