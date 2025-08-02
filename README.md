@@ -2,10 +2,17 @@
 
 A Model Context Protocol (MCP) server which allows AI agents to interact with Yahoo Finance. 
 
-The current tool kit allows following actions:
+## ✨ Key Features
 
-- Get most recent price development and news of a selected stock, 
-- Give recommendations with technical analysis indicators or analyst recommendations.
+| Feature | Description |
+| ------- | ----------- |
+| 📈 **Stock intelligence toolkit** | Get most recent price development and news of a selected ticker. |
+| 📊 **Recommendation toolkit** | Get recommendations based on technical analysis indicators or analysts' opinions. |
+| 🔌 **Seamless plugin with client** | The server can be integrated with the main stream mcp clients (Claude, VS code etc.) seamlessly. |
+| 🖥️ **CLI Interface** | Offers a CLI interface to start the server. |
+| 🐳 **Docker-Ready** | Dockerfile availiable. |
+| 📦 **Extensible** | The server can be extended with addtional tools easily. |
+---
 
 ## 🚀 Getting Started
 
