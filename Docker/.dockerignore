@@ -1,0 +1,17 @@
+# Git version control
+.git
+
+# Python virtual environment
+.venv
+
+# Docker files
+Docker/
+Dockerfile
+
+# IDE and cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/

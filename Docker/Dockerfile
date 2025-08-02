@@ -7,8 +7,8 @@ WORKDIR /app
 # Set environment variables for proxy
 ENV no_proxy="localhost,127.0.0.1,"
 
+COPY src ./src
 COPY pyproject.toml .
-COPY main.py .
 
 RUN uv venv .venv
 RUN uv sync
