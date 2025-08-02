@@ -1,0 +1,37 @@
+
+name: CI with pylint
+on:
+  workflow_dispatch:
+  push:
+    branches: none
+  pull_request:
+    branches: [ "main", "test" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v1
+
+    - name: Install project dependencies with uv
+      run: uv sync # Use uv sync to install dependencies from pyproject.toml
+
+    - name: Add lint/test tools with uv
+      run: |
+        uv add pylint
+
+    - name: Lint with pylint and export restults to html
+      run: |
+        uv run pylint BasketIntelligence/ --fail-under 6.0 --score=y --output-format=json:pylint.json,parseable

@@ -2,17 +2,21 @@ import yfinance as yf
 from ta.momentum import rsi
 from utils.input_preprocessor import preprocess_rsi_input
 
+'''
+CreateTicker class to interact with yfinance for stock data retrieval.
+The methods defined in this class are used as tools in the MCP server.'''
+
 class CreateTicker():
     '''
     Create a yfinance ticker object for a given stock symbol.
     '''
-    
+
     def __init__(self, stock: str):
         '''
         Initialize the ticker object with the stock symbol.
         '''
         self.ticker = yf.Ticker(stock)
-    
+
     def fetch_closing(self):
         """
         Fetch closing price of the stock for the mcp tool from yfinance.
@@ -31,8 +35,8 @@ class CreateTicker():
         df_input = self.ticker.history(period="1mo")
 
         rsi_series = rsi(
-              close= df_input["Close"], 
-              window= rsi_window, 
+              close= df_input["Close"],
+              window= rsi_window,
               fillna= False
               )
         rsi_index = rsi_series.iloc[-1]
@@ -49,9 +53,8 @@ class CreateTicker():
         '''
         Get recommendations summary for the mcp tool from yfinance.
         '''
-        return self.get_recommendations()
+        return self.ticker.get_recommendations()
 
-    
     def get_recent_news(self):
         '''
         Get recommendations summary for the mcp tool from yfinance.
