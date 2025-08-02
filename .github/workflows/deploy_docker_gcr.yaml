@@ -1,0 +1,40 @@
+name: Build and Deploy to GKE
+
+on:
+  workflow_dispatch:
+    inputs:
+      GCP_PROJECT_ID:
+        description: 'ID of the GCP project'
+        required: true
+        default: 'GCP_PROJECT'
+      tag:
+        description: 'Tag for the docker image'
+        required: true
+        default: 'dev'
+      image_name:
+        description: 'Name for the docker image'
+        required: true
+        default: 'mcp-server-stock-intelligence'
+
+jobs:
+  build-push-docker-image:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    # Authenticate to GCP
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v2
+      with:
+        credentials_json: '${{ secrets.GCP_TOKEN }}'
+
+    - name: Configure Docker to use gcloud CLI
+      run: |
+        gcloud auth configure-docker
+
+    - name: Build Docker image
+      run: |
+        docker build -t gcr.io/${{ inputs.GCP_PROJECT_ID }}/${{ inputs.image_name }}:${{ inputs.tag }} .
