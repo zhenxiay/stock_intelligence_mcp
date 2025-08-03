@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    server_name: mcp-server-stock-intelligence
+  name: mcp-server-stock-intelligence
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      server_name: mcp-server-stock-intelligence
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        server_name: mcp-server-stock-intelligence
+    spec:
+      containers:
+        - image: mcp-server-stock-intelligence:test
+          name: mcp-server-stock-intelligence
+          ports:
+            - containerPort: 8008
+              protocol: TCP
+      restartPolicy: Always
