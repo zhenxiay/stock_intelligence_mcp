@@ -17,6 +17,11 @@ def preprocess_rsi_input(input) -> int:
                 return int(match.group())
         elif isinstance(input, int):
             return input
+            
+        print("Input is not an integer. Set input to default value 14...")
+        
+        return 14
+        
     except ValueError as e:
         print(f"ValueError: {e}")
     except Exception as e:
