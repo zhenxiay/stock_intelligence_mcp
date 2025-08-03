@@ -30,7 +30,7 @@ jobs:
 
     - name: Add lint/test tools with uv
       run: |
-        uv add yapf pylint
+        uv add yapf pylint pytest
 
     - name: Automatic Formatting
       run: |
