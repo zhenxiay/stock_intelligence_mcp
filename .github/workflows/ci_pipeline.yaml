@@ -1,5 +1,5 @@
 
-name: CI with pylint
+name: CI with yapf, pylint
 on:
   workflow_dispatch:
   push:
@@ -30,9 +30,14 @@ jobs:
 
     - name: Add lint/test tools with uv
       run: |
-        uv add pylint
+        uv add yapf pylint
 
-    - name: Lint with pylint and export restults to html
+    - name: Automatic Formatting
       run: |
+        # run yapf to format the scripts automatically
         export PYTHONPATH=$PYTHONPATH:./src
-        uv run pylint src/ --fail-under 6.0 --score=y --output-format=json:pylint.json,parseable
+        uv run yapf -i --style '{use_tabs: False}' src/
+
+    - name: Lint with pylint
+      run: |
+        uv run pylint src/ --fail-under 9.0 --score=y --output-format=json:pylint.json,parseable
