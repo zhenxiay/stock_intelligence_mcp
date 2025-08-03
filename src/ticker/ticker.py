@@ -1,10 +1,12 @@
-import yfinance as yf
-from ta.momentum import rsi
-from utils.input_preprocessor import preprocess_rsi_input
 
 '''
 CreateTicker class to interact with yfinance for stock data retrieval.
-The methods defined in this class are used as tools in the MCP server.'''
+The methods defined in this class are used as tools in the MCP server.
+'''
+
+import yfinance as yf
+from ta.momentum import rsi
+from utils.input_preprocessor import preprocess_rsi_input
 
 class CreateTicker():
     '''
