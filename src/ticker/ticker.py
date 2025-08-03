@@ -72,4 +72,3 @@ class CreateTicker():
         ]
 
         return result
-    
