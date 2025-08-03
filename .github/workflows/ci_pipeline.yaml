@@ -36,7 +36,7 @@ jobs:
       run: |
         # run yapf to format the scripts automatically
         export PYTHONPATH=$PYTHONPATH:./src
-        uv run yapf -i -d --style '{use_tabs: False}' -r src/
+        uv run yapf -i --style '{use_tabs: False}' -r src/
 
     - name: Lint with pylint
       run: |
