@@ -13,9 +13,14 @@ spec:
       port: 8008
       targetPort: 8008
       protocol: TCP
+
+#spec:
+  #type: NodePort
+  #selector:
+    #server_name: mcp-server-stock-intelligence
   #ports:
-  #  - protocol: TCP
-  #    port: 8008
-  #    targetPort: 8008
-  #    nodePort: 30008
+    #- protocol: TCP
+      #port: 8008
+      #targetPort: 8008
+      #nodePort: 30008
   
