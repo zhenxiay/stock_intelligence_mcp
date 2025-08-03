@@ -1,7 +1,9 @@
-import re
+
 '''
 Utility functions for preprocessing inputs in the MCP tool.
 '''
+
+import re
 
 def preprocess_rsi_input(input) -> int:
     '''
