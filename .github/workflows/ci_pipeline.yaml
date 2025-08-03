@@ -46,4 +46,4 @@ jobs:
     - name: Run pytest
       run: |
         export PYTHONPATH=$PYTHONPATH:./src
-        uv run pytest tests/ --cov-report=xml --cov-report=html --cov-report=term-missing
+        uv run pytest tests/
