@@ -1,16 +1,26 @@
+
+'''
+Utility functions for preprocessing inputs in the MCP tool.
+'''
+
+import re
+
 def preprocess_rsi_input(input) -> int:
     '''
     Preprocess the RSI input value to ensure it is an integer.
     '''
-    if isinstance(input, str):
-        # Extract digits from the string
-        import re
-        match = re.search(r'\d+', input)
-        if match:
-            return int(match.group())
-        else:
-            raise ValueError(f"No integer found in input: {input}")
-    elif isinstance(input, int):
-        return input
-    else:
-        raise TypeError(f"Expected a string or integer, got {type(input)} instead.")
+    try:
+        if isinstance(input, str):
+           # Extract digits from the string
+            match = re.search(r'\d+', input)
+            if match:
+                return int(match.group())
+        elif isinstance(input, int):
+            return input
+        print("Input is not an integer. Set input to default value 14...")
+        return 14
+
+    except ValueError as e:
+        print(f"ValueError: {e}")
+    except Exception as e:
+        print(f"A non ValueError occured: {e}")

@@ -1,0 +1,49 @@
+
+name: CI with yapf, pylint
+on:
+  workflow_dispatch:
+  push:
+    branches: none
+  pull_request:
+    branches: [ "main", "test" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v1
+
+    - name: Install project dependencies with uv
+      run: uv sync # Use uv sync to install dependencies from pyproject.toml
+
+    - name: Add lint/test tools with uv
+      run: |
+        uv add yapf pylint pytest
+
+    - name: Automatic Formatting
+      run: |
+        # run yapf to format the scripts automatically
+        export PYTHONPATH=$PYTHONPATH:./src
+        uv run yapf -i --style '{use_tabs: False}' -r src/
+
+    - name: Lint with pylint
+      run: |
+        export PYTHONPATH=$PYTHONPATH:./src
+        uv run pylint src/ --fail-under 9.0 --score=y --output-format=json:pylint.json,parseable
+
+    - name: Run pytest
+      run: |
+        export PYTHONPATH=$PYTHONPATH:./src
+        uv run pytest tests/
