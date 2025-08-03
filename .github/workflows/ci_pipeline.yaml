@@ -34,4 +34,5 @@ jobs:
 
     - name: Lint with pylint and export restults to html
       run: |
+        export PYTHONPATH=$PYTHONPATH:./src
         uv run pylint src/ --fail-under 6.0 --score=y --output-format=json:pylint.json,parseable
