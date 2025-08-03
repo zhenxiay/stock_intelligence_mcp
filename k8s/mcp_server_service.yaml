@@ -5,12 +5,17 @@ metadata:
     server_name: mcp-server-stock-intelligence
   name: mcp-server-stock-intelligence
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     server_name: mcp-server-stock-intelligence
   ports:
-    - protocol: TCP
+    - name: "8008"
       port: 8008
       targetPort: 8008
-      nodePort: 30008
+      protocol: TCP
+  #ports:
+  #  - protocol: TCP
+  #    port: 8008
+  #    targetPort: 8008
+  #    nodePort: 30008
   
