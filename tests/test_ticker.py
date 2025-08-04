@@ -1,7 +1,8 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from ticker.ticker import CreateTicker
+from stock_intelligence_mcp.ticker.ticker import CreateTicker
 import pandas as pd
+import json
 
 @pytest.fixture
 def mock_ticker():
@@ -20,7 +21,7 @@ def test_get_recommendations_rsi_returns_valid_dict(mock_ticker):
     # Arrange
     rsi_window = 14
     # The function under test calls `rsi` from `ta.momentum`
-    with patch('src.ticker.ticker.rsi') as mock_rsi:
+    with patch('stock_intelligence_mcp.ticker.ticker.rsi') as mock_rsi:
         # Mock the return of the rsi function to be a pandas Series-like object
         # where the last item can be accessed via .iloc[-1]
         mock_series = MagicMock()
@@ -34,5 +35,5 @@ def test_get_recommendations_rsi_returns_valid_dict(mock_ticker):
 
         # Assert
         assert result is not None
-        assert isinstance(result, dict)
-        assert "recommendation" in result
+        assert isinstance(json.loads(result), dict)
+        assert "recommendation" in json.loads(result)["content"]

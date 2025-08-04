@@ -6,7 +6,8 @@ The methods defined in this class are used as tools in the MCP server.
 
 import yfinance as yf
 from ta.momentum import rsi
-from utils.input_preprocessor import preprocess_rsi_input
+from stock_intelligence_mcp.utils.input_preprocessor import preprocess_rsi_input
+from stock_intelligence_mcp.utils.output_preprocessor import json_output
 
 class CreateTicker():
     '''
@@ -57,7 +58,9 @@ class CreateTicker():
             'hold'
         )
 
-        return {f"rsi_{rsi_window}": rsi_index, "recommendation": action}
+        output = {f"rsi_{rsi_window}": rsi_index, "recommendation": action}
+
+        return json_output(output)
 
     def get_recommendations_analysts(self):
         '''
@@ -79,4 +82,4 @@ class CreateTicker():
         for item in news
         ]
 
-        return result
+        return json_output(result)
