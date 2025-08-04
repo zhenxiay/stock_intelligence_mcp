@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from ticker.ticker import CreateTicker
+from stock_intelligence_mcp.ticker.ticker import CreateTicker
 import pandas as pd
 
 @pytest.fixture

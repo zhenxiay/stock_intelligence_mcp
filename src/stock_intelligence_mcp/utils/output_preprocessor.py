@@ -12,3 +12,4 @@ def json_output(output):
         "content_type": "application/json",
         "content": output
     }, indent=2)
+    

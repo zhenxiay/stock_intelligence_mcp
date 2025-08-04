@@ -6,8 +6,8 @@ The methods defined in this class are used as tools in the MCP server.
 
 import yfinance as yf
 from ta.momentum import rsi
-from utils.input_preprocessor import preprocess_rsi_input
-from utils.output_preprocessor import json_output
+from stock_intelligence_mcp.utils.input_preprocessor import preprocess_rsi_input
+from stock_intelligence_mcp.utils.output_preprocessor import json_output
 
 class CreateTicker():
     '''
