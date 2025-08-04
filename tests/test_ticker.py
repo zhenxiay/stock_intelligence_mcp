@@ -36,4 +36,4 @@ def test_get_recommendations_rsi_returns_valid_dict(mock_ticker):
         # Assert
         assert result is not None
         assert isinstance(json.loads(result), dict)
-        assert "recommendation" in json.loads(result)
+        assert "recommendation" in json.loads(result)["content"]
