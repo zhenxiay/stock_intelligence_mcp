@@ -11,3 +11,9 @@ dependencies = [
     "yfinance==0.2.65",
     "ta==0.11.0",
     ]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
