@@ -28,6 +28,14 @@ class CreateTicker():
 
         return latest_close
 
+    def fetch_14d_closing(self):
+        """
+        Fetch last 14 days closing price of the stock for the mcp tool from yfinance.
+        """
+        data = self.ticker.history(period="14d")
+
+        return data[["Close"]].to_markdown()
+
     def get_recommendations_rsi(self, rsi_window):
         '''
         Calculate RSI and return recommendation based on RSI value.

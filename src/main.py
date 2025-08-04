@@ -42,6 +42,14 @@ def main(
         return ticker.fetch_closing()
 
     @mcp.tool()
+    def get_14d_closing_stock_price(stock):
+        """
+        Get the last 14 days closing price of the stock asked in the question.
+        """
+        ticker = CreateTicker(stock)
+        return ticker.fetch_14d_closing()
+
+    @mcp.tool()
     def technical_analysis_rsi(stock, rsi_window) -> dict:
         """
         Get the recommendations based on the calculated Relative Strength Index (RSI).
