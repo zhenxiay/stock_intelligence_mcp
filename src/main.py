@@ -42,7 +42,7 @@ def main(
         return ticker.fetch_closing()
 
     @mcp.tool()
-    def get_14d_closing_stock_price(stock) -> markdown:
+    def get_14d_closing_stock_price(stock):
         """
         Get the last 14 days closing price of the stock asked in the question.
         """
