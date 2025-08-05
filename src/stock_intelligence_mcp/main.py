@@ -4,7 +4,7 @@ This is the entrypoint to the Stock Intelligence MCP server.
 '''
 from mcp.server.fastmcp import FastMCP
 import typer
-from ticker.ticker import CreateTicker
+from stock_intelligence_mcp.ticker.ticker import CreateTicker
 
 app = typer.Typer()
 

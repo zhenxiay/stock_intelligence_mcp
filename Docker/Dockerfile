@@ -18,6 +18,8 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 WORKDIR /app
 
+ENV http_proxy=""
+ENV https_proxy=""
 ENV no_proxy="localhost,127.0.0.1,"
 ENV PATH="/app/.venv/bin:$PATH"
 

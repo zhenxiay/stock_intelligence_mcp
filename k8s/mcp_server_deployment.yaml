@@ -17,8 +17,16 @@ spec:
         server_name: mcp-server-stock-intelligence
     spec:
       containers:
-        - image: mcp-server-stock-intelligence:test
+        - image: mcp-server-stock-intelligence-yuz1ka:test
           name: mcp-server-stock-intelligence
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: HTTP_PROXY
+              value: "http://rb-proxy-de.bosch.com:8080"
+            - name: HTTPS_PROXY
+              value: "http://rb-proxy-de.bosch.com:8080"
+            - name: NO_PROXY
+              value: "localhost,127.0.0.1,kind"
           ports:
             - containerPort: 8008
               protocol: TCP
