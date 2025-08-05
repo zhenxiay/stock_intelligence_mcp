@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcp-server-stock-intelligence
+  labels:
+    server_name: mcp-server-stock-intelligence
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      server_name: mcp-server-stock-intelligence
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        server_name: mcp-server-stock-intelligence
+    spec:
+      containers:
+        - name: mcp-server-stock-intelligence
+          image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: HTTP_PROXY
+              value: "{{ .Values.proxy.http }}"
+            - name: HTTPS_PROXY
+              value: "{{ .Values.proxy.https }}"
+            - name: NO_PROXY
+              value: "{{ .Values.proxy.no }}"
+          ports:
+            - containerPort: {{ .Values.containerPort }}
+              protocol: TCP
+      restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    server_name: mcp-server-stock-intelligence
+  name: mcp-server-stock-intelligence
+
+spec:
+  type: NodePort
+  selector:
+    server_name: mcp-server-stock-intelligence
+  ports:
+    - protocol: TCP
+      port: {{ .Values.containerPort }}
+      targetPort: {{ .Values.containerPort }}
+      nodePort: {{ .Values.nodePort }}
