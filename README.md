@@ -76,6 +76,21 @@ docker build . -t mcp-server-stock-intelligence:test -f Docker/Dockerfile
 docker run --name mcp-server-stock -p 8008:8008 mcp-server-stock-intelligence:test
 ```
 
+#### Run the k8s manifest
+
+A secret has first to be created with some proxy speficications as env variable has to be created:
+
+```bash
+kubectl create secret generic proxy-env --from-literal=HTTP_PROXY=http://localhost:3128 --from-literal=HTTPS_PROXY=https://localhost:3128 --from-literal=NO_PROXY=localhost,127.0.0.1,kind
+```
+
+Then apply the deployment and service:
+
+```bash
+kubectl apply -f k8s/mcp-server-deployment.yaml
+kubectl apply -f k8s/mcp-server-service.yaml
+```
+
 ## ⚙️ Connect to the Server
 
 Here are some options with which you can connect the test this server:
