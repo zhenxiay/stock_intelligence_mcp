@@ -1,0 +1,14 @@
+replicaCount: 1
+
+image:
+  repository: mcp-server-stock-intelligence-yuz1ka
+  tag: v0.1.1
+  pullPolicy: IfNotPresent
+
+proxy:
+  http: ""
+  https: ""
+  no: "localhost,127.0.0.1,kind"
+
+containerPort: 8008
+nodePort: 30008
