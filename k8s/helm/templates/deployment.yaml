@@ -18,8 +18,8 @@ spec:
     spec:
       containers:
         - name: mcp-server-stock-intelligence
-          image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: "{{ .Values.mcp_server.image.name }}:{{ .Values.mcp_server.image.tag }}"
+          imagePullPolicy: {{ .Values.mcp_server.image.pullPolicy }}
           env:
             - name: HTTP_PROXY
               value: "{{ .Values.proxy.http }}"
@@ -28,7 +28,7 @@ spec:
             - name: NO_PROXY
               value: "{{ .Values.proxy.no }}"
           ports:
-            - containerPort: {{ .Values.containerPort }}
+            - containerPort: {{ .Values.mcp_server.containerPort }}
               protocol: TCP
       restartPolicy: Always
 
@@ -47,6 +47,6 @@ spec:
     server_name: mcp-server-stock-intelligence
   ports:
     - protocol: TCP
-      port: {{ .Values.containerPort }}
-      targetPort: {{ .Values.containerPort }}
-      nodePort: {{ .Values.nodePort }}
+      port: {{ .Values.mcp_server.containerPort }}
+      targetPort: {{ .Values.mcp_server.containerPort }}
+      nodePort: {{ .Values.mcp_server.nodePort }}

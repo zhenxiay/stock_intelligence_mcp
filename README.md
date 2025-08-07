@@ -52,9 +52,9 @@ An example of starting the server with port 8008, streamable-http as transport a
 uv run src/main.py --name example_server --port 8008 --transport streamable-http
 ```
 
-### 🧑‍💻 Option 2: Run with Docker
+### 🧑‍💻 Option 2: Run with Docker/ k8s/ Helm chart
 
-Make sure that Docker engine is installed on your PC.
+❗Make sure that Docker engine/ a k8s cluster (minikube/ kind etc.)/ Helm is installed on your PC.
 
 #### Create a new directory for your project
 
@@ -78,7 +78,7 @@ docker run --name mcp-server-stock -p 8008:8008 mcp-server-stock-intelligence:te
 
 #### Run the k8s manifest
 
-A secret has first to be created with some proxy speficications as env variable has to be created:
+❗A secret has first to be created with some proxy specifications as env variable has to be created:
 
 ```bash
 kubectl create secret generic proxy-env --from-literal=HTTP_PROXY=http://localhost:3128 --from-literal=HTTPS_PROXY=https://localhost:3128 --from-literal=NO_PROXY=localhost,127.0.0.1,kind
@@ -89,6 +89,14 @@ Then apply the deployment and service:
 ```bash
 kubectl apply -f k8s/mcp-server-deployment.yaml
 kubectl apply -f k8s/mcp-server-service.yaml
+```
+
+#### Run Helm to create the server
+
+You can use the Helm chart and the following commands to create the server as well:
+
+```bash
+helm upgrade --install mcp-server-stock-intelligence k8s/helm --set proxy.http="http://your-proxy:8080" --set proxy.https="http://your-proxy:8080"
 ```
 
 ## ⚙️ Connect to the Server
@@ -131,6 +139,8 @@ Example of using sse transport
       }
    }
    ```
+
+❗Please notice that the real port number is related to your own settings on your py command/ docker container/ helm chart values.
 
 Exact instructions for Claude desktop or VS code can be found here:
 
