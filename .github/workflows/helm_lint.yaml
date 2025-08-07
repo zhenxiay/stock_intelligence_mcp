@@ -19,5 +19,5 @@ jobs:
 
     - name: Lint Helm Chart
       run: |
-        cd k8s/helm
-        helm lint .
+        mv k8s/helm/chart.yaml k8s/helm/Chart.yaml
+        helm lint k8s/helm
