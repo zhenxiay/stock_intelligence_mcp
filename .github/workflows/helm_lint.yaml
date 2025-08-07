@@ -19,4 +19,4 @@ jobs:
 
     - name: Lint Helm Chart
       run: |
-        helm lint .k8s/helm
+        helm lint ./k8s/helm
