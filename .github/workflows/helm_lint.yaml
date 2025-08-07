@@ -19,5 +19,4 @@ jobs:
 
     - name: Lint Helm Chart
       run: |
-        cd k8s/helm
-        helm lint .
+        helm lint k8s/helm
