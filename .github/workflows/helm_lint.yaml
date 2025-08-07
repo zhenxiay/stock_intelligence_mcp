@@ -1,0 +1,22 @@
+name: Lint Helm Chart
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [ "main", "test" ]
+
+jobs:
+  helm-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Helm CLI
+      uses: azure/setup-helm@v4.3.0
+      id: install
+
+    - name: Lint Helm Chart
+      run: |
+        helm lint .k8s/helm
