@@ -1,14 +1,19 @@
-replicaCount: 1
 
-image:
-  repository: mcp-server-stock-intelligence-yuz1ka
-  tag: v0.1.1
-  pullPolicy: IfNotPresent
+# ----- General Configuration values -----
+
+replicaCount: 1
 
 proxy:
   http: ""
   https: ""
   no: "localhost,127.0.0.1,kind"
 
-containerPort: 8008
-nodePort: 30008
+# ----- MCP server Configuration values -----
+
+mcp_server:
+  image:
+    name: mcp-server-stock-intelligence
+    tag: v0.1.2
+    pullPolicy: IfNotPresent
+  containerPort: 8008
+  nodePort: 30008

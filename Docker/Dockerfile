@@ -21,7 +21,6 @@ WORKDIR /app
 ENV http_proxy=""
 ENV https_proxy=""
 ENV no_proxy="localhost,127.0.0.1,"
-ENV PATH="/app/.venv/bin:$PATH"
 
 COPY --from=builder /app/.venv ./.venv
 
@@ -31,4 +30,7 @@ COPY pyproject.toml .
 
 EXPOSE 8008
 
-CMD ["uv","run", "src/main.py", "--port", "8008", "--transport", "streamable-http"]
+ENV PYTHONPATH="/app/src:$PYTHONPATH"
+ENV PATH="/app/.venv/bin:$PATH"
+
+CMD ["uv","run", "src/stock_intelligence_mcp/main.py", "--port", "8008", "--transport", "streamable-http"]
