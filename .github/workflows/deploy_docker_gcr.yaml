@@ -38,3 +38,7 @@ jobs:
     - name: Build Docker image
       run: |
         docker build -f ./Docker/Dockerfile -t gcr.io/${{ inputs.GCP_PROJECT_ID }}/${{ inputs.image_name }}:${{ inputs.tag }} .
+
+    - name: Push Docker image
+      run: |
+        docker push gcr.io/${{ inputs.GCP_PROJECT_ID }}/${{ inputs.image_name }}:${{ inputs.tag }}
