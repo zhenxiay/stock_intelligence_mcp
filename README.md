@@ -10,7 +10,8 @@ A Model Context Protocol (MCP) server which allows AI agents to interact with Ya
 | 📊 **Recommendation toolkit** | Get recommendations based on technical analysis indicators or analysts' opinions. |
 | 🔌 **Seamless plugin with client** | The server can be integrated with the main stream mcp clients (Claude, VS code etc.) seamlessly. |
 | 🖥️ **CLI Interface** | Offers a CLI interface to start the server. |
-| 🐳 **Docker-Ready** | Dockerfile availiable. |
+| 🐳 **Docker-Ready** | Dockerfile available. |
+| ⚓ **k8s & Helm-Ready** | k8s manifest and Helm chart also available. |
 | 📦 **Extensible** | The server can be extended with addtional tools easily. |
 ---
 
