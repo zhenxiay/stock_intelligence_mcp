@@ -4,10 +4,6 @@ A Model Context Protocol (MCP) server enabling AI agents to access and analyze Y
 The toolkit provides up-to-date stock information, including price trends, summary of analyst recommendations, and market news.
 It also features tools for generating buy or sell suggestions based on key technical indicators.
 
-## 💻 Demo
-
-![alt text](https://github.com/zhenxiay/stock_intelligence_mcp/blob/dev/mcp_si_server_demo.png?raw=true)
-
 ## 🛠️ MCP Server Tools (to be extended)
 
 | Tool | Description |
@@ -17,6 +13,10 @@ It also features tools for generating buy or sell suggestions based on key techn
 | technical_analysis_rsi | Get RSI (Relative Strength Index) technical analysis for a stock ticker. |
 | get_sell_buy_advice | Get buy/sell/hold advice for a stock ticker based on technical indicators. |
 | get_recent_stock_news | Get the most recent news articles for a stock ticker. |
+
+## 💻 Demo
+
+![alt text](https://github.com/zhenxiay/stock_intelligence_mcp/blob/dev/mcp_si_server_demo.png?raw=true)
 
 ## ✨ Key Features
 
