@@ -6,7 +6,7 @@ It also features tools for generating buy or sell suggestions based on key techn
 
 ## Demo
 
-![alt text](https://github.com/zhenxiay/stock_intelligence_mcp/blob/dev/mcp_si_server_demo?raw=true)
+![alt text](https://github.com/zhenxiay/stock_intelligence_mcp/blob/dev/mcp_si_server_demo.png?raw=true)
 
 ## 🛠️ MCP Server Tools (to be extended)
 
