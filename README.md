@@ -4,7 +4,7 @@ A Model Context Protocol (MCP) server enabling AI agents to access and analyze Y
 The toolkit provides up-to-date stock information, including price trends, summary of analyst recommendations, and market news.
 It also features tools for generating buy or sell suggestions based on key technical indicators.
 
-## Demo
+## 💻 Demo
 
 ![alt text](https://github.com/zhenxiay/stock_intelligence_mcp/blob/dev/mcp_si_server_demo.png?raw=true)
 
