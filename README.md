@@ -1,6 +1,18 @@
 # 📈📉📊 stock_intelligence_mcp
 
-A Model Context Protocol (MCP) server which allows AI agents to interact with Yahoo Finance. 
+A Model Context Protocol (MCP) server enabling AI agents to access and analyze Yahoo Finance data.
+The toolkit provides up-to-date stock information, including price trends, summary of analyst recommendations, and market news.
+It also features tools for generating buy or sell suggestions based on key technical indicators.
+
+## 🛠️ MCP Server Tools (to be extended)
+
+| Tool | Description |
+| ---- | ----------- |
+| get_closing_stock_price | Get the closing price for a given stock ticker on a specific date. |
+| get_14d_closing_stock_price | Get the closing prices for the last 14 days for a given stock ticker. |
+| technical_analysis_rsi | Get RSI (Relative Strength Index) technical analysis for a stock ticker. |
+| get_sell_buy_advice | Get buy/sell/hold advice for a stock ticker based on technical indicators. |
+| get_recent_stock_news | Get the most recent news articles for a stock ticker. |
 
 ## ✨ Key Features
 
