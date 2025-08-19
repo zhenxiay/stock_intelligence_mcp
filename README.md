@@ -1,17 +1,38 @@
 # 📈📉📊 stock_intelligence_mcp
 
-A Model Context Protocol (MCP) server which allows AI agents to interact with Yahoo Finance. 
+A Model Context Protocol (MCP) server enabling AI agents to access and analyze Yahoo Finance data.
+The toolkit provides up-to-date stock information, including price trends, summary of analyst recommendations, and market news.
+It also features tools for generating buy or sell suggestions based on key technical indicators.
+
+## 🛠️ MCP Server Tools (to be extended)
+
+| Tool | Description |
+| :---- | :----------- |
+| `get_closing_stock_price` | Get the closing price for a given stock ticker on a specific date. |
+| `get_14d_closing_stock_price` | Get the closing prices for the last 14 days for a given stock ticker. |
+| `technical_analysis_rsi` | Get RSI (Relative Strength Index) technical analysis for a stock ticker. |
+| `get_sell_buy_advice` | Get buy/sell/hold advice for a stock ticker based on a summary of analysts recommendations. |
+| `get_recent_stock_news` | Get the most recent news articles for a stock ticker. |
+
+## 💻 Demo
+
+The screenshot below demonstrates the usage of this server in a customized Streamlit client:
+
+![alt text](https://github.com/zhenxiay/stock_intelligence_mcp/blob/dev/mcp_si_server_demo.png?raw=true)
+
+The server is fully compatible with popular MCP clients such as Claude Desktop and VS Code.
+
+Check out the *Connect to the Server* section for more details!
 
 ## ✨ Key Features
 
 | Feature | Description |
-| ------- | ----------- |
-| 📈 **Stock intelligence toolkit** | Get most recent price development and news of a selected ticker. |
-| 📊 **Recommendation toolkit** | Get recommendations based on technical analysis indicators or analysts' opinions. |
-| 🔌 **Seamless plugin with client** | The server can be integrated with the main stream mcp clients (Claude, VS code etc.) seamlessly. |
+| :------- | :----------- |
+| 🔌 **Easy plugin** | The server can be integrated with the main stream mcp clients (Claude, VS code etc.) seamlessly. |
 | 🖥️ **CLI Interface** | Offers a CLI interface to start the server. |
-| 🐳 **Docker-Ready** | Dockerfile availiable. |
-| 📦 **Extensible** | The server can be extended with addtional tools easily. |
+| 🐳 **Docker-Ready** | Dockerfile available. |
+| ⚓ **k8s & Helm-Ready** | k8s manifest and Helm chart also available. |
+| 📦 **Extensible** | The server can be extended with additional tools easily. |
 ---
 
 ## 🚀 Getting Started
