@@ -73,6 +73,58 @@ def main(
         ticker = CreateTicker(stock)
         return ticker.get_recent_news()
 
+    @mcp.resource(uri="resource://server_prompt", 
+                  mime_type="application/json",
+                  description="Server specific prompt to guide the agent to interact with the server.")
+    def get_prompt():
+        """
+        Resource for explaining the technical indicator RSI.
+        """
+        return {
+            "prompt": (
+                "You are a financial expert. You have access to tools from this server. "
+                "Use these tools to answer questions about stock prices, trends, and recommendations. "
+                "Provide clear and concise answers based on the data retrieved from the tools."
+                "You also have access to resources that explains specific technical indicators. "
+                "Use them to enhance your answers when relevant."
+                "If the resource contains a markdown file, try to fetch its content to answer the question."
+            ),
+            "annotations": {
+                "audience": ["assistant"],
+                "priority": 1.0,
+            }
+        }
+    
+    @mcp.resource(uri="resource://RSI", 
+                  mime_type="application/json",
+                  description="Explanation of the technical indicator RSI.")
+    def explain_rsi():
+        """
+        Resource for explaining the technical indicator RSI.
+        """
+        return {
+            "uri": "file:///resources/RSI.md",
+            "annotations": {
+            "audience": ["assistant"],
+            "priority": 0.8,
+            }
+        }
+    
+    @mcp.resource(uri="resource://RSI_read", 
+                  mime_type="text/markdown",
+                  description="Read and explain the technical indicator RSI.")
+    async def read_rsi():
+              """
+              Reads the RSI.md file and returns its content.
+              """
+              import aiofiles
+              try:
+                  async with aiofiles.open("resources/RSI.md", mode="r") as f:
+                      content = await f.read()
+                      return content
+              except FileNotFoundError:
+                  return "Markdown file not found."
+    
     mcp.run(transport)
 
 if __name__ == "__main__":

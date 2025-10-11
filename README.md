@@ -64,13 +64,20 @@ The server offers a CLI interface for the start.
 Run the following command to check the availiable parameters:
 
 ```bash
-uv run src/main.py --help
+export PYTHONPATH=./src
+uv run src/stock_intelligence_mcp/main.py --help
+```
+
+```powershell
+$env:PYTHONPATH=".\src"
+uv run src/stock_intelligence_mcp/main.py
 ```
 
 An example of starting the server with port 8008, streamable-http as transport and example_server as name:
 
 ```bash
-uv run src/main.py --name example_server --port 8008 --transport streamable-http
+export PYTHONPATH=./src
+uv run src/stock_intelligence_mcp/main.py --name example_server --port 8008 --transport streamable-http
 ```
 
 ### 🧑‍💻 Option 2: Run with Docker/ k8s/ Helm chart
