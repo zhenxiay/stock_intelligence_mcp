@@ -73,12 +73,27 @@ def main(
         ticker = CreateTicker(stock)
         return ticker.get_recent_news()
 
+    # Can be alternatively implemented as mcp.resource()
+    @mcp.tool()
+    async def read_resources(file_name):
+              """
+              Reads files stored in the ./resources folder and returns its content to enhence the context.
+              Current available files: RSI.md, server_prompt.md
+              """
+              import aiofiles
+              try:
+                  async with aiofiles.open(f"resources/{file_name}", mode="r") as f:
+                      content = await f.read()
+                      return content
+              except FileNotFoundError:
+                  return "Markdown file not found."
+
     @mcp.resource(uri="resource://server_prompt", 
                   mime_type="application/json",
                   description="Server specific prompt to guide the agent to interact with the server.")
     def get_prompt():
         """
-        Resource for explaining the technical indicator RSI.
+        Get the server specific prompt to guide the agent to interact with the server.
         """
         return {
             "prompt": (
@@ -109,22 +124,7 @@ def main(
             "priority": 0.8,
             }
         }
-    
-    @mcp.resource(uri="resource://RSI_read", 
-                  mime_type="text/markdown",
-                  description="Read and explain the technical indicator RSI.")
-    async def read_rsi():
-              """
-              Reads the RSI.md file and returns its content.
-              """
-              import aiofiles
-              try:
-                  async with aiofiles.open("resources/RSI.md", mode="r") as f:
-                      content = await f.read()
-                      return content
-              except FileNotFoundError:
-                  return "Markdown file not found."
-    
+        
     mcp.run(transport)
 
 if __name__ == "__main__":
