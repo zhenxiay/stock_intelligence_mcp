@@ -43,3 +43,5 @@ python cookbook/example_agno_os.py
 ## Demo
 
 ![alt text](image.png)
+
+![alt text](image2.png)
