@@ -27,6 +27,7 @@ uv pip install -U openai agno
 ### Configure LLM for the agent (OpenAI)
 
 Run the following command to create a .env file.
+
 Add your Open AI API key to the file.
 
 ```bash
@@ -36,12 +37,28 @@ cp template.env .env
 
 ## Run a cookbook
 
+Execute the following command to see the outcome.
+
+Make sure that you are executing the command from the project root folder.
+
+You can add the stock of your choice with the flag --ticker.
+
+#### Example of using Symbol (ASML)
+
 ```shell
-python cookbook/example_agno_os.py
+uv run cookbook/example_agno_os.py --ticker 'ASML'
+```
+
+#### Example of using stock name (Snowflake)
+
+```shell
+uv run cookbook/example_agno_os.py --ticker 'Snowflake'
 ```
 
 ## Demo
 
-![alt text](image.png)
+![alt text](demo_img/agno_stock_mcp_demo.gif)
 
-![alt text](image2.png)
+![alt text](demo_img/image.png)
+
+![alt text](demo_img/image2.png)

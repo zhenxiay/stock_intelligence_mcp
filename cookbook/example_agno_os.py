@@ -14,18 +14,28 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", "src"))
 
 from agno.agent import Agent
-from agno.tools.yfinance import YFinanceTools
 from agno.tools.mcp import MCPTools
 from agno.models.openai.responses import OpenAIResponses
 
+import typer
+app = typer.Typer()
 
-async def run_agent(message: str) -> None:
+async def run_agent(ticker: str) -> None:
     '''
     Run the financial analyst agent with the given message.
     The agent is connected with the tools from the MCP server stock_intelligence_cmp.
     Make sure that the MCP server is running before executing this script.
     In this example, this server is running on localhost port 8008 with streamable-http transport.
     '''
+    
+    message = f'''
+        Provide a summary of the most recent stock performance for {ticker} in 2025.
+        Please include following key metrics:
+            - Closing price changes of last 14 days, 
+            - Analyst recommendations, 
+            - Relative Strenth Index (RSI)
+        Format the response using markdown and include tables where appropriate.
+        '''
 
     # Initialize and connect to the MCP server
     try:
@@ -42,7 +52,6 @@ async def run_agent(message: str) -> None:
     try:
         agent = Agent(
             model=OpenAIResponses(id="gpt-4.1"),
-            #tools=[YFinanceTools()],
             tools=[mcp_tools],
             description="You are an investment analyst that researches stock prices, analyst recommendations, and stock fundamentals.",
             instructions=['''Format your response using markdown and use tables to display data where possible.
@@ -60,21 +69,18 @@ async def run_agent(message: str) -> None:
     finally:
         # Always close the connection when done
         await mcp_tools.close()
-    
-def create_message(ticker: str) -> str:
+
+@app.command()
+def main(
+    ticker: str = typer.Option(
+        "SNOW", 
+        help="Name or Symbol of like (APPL or MSFT) the stock that is to be analyzed."
+        )
+    ):
     '''
-    Create prompt for the agent to analyze stock performance with a selected ticker.
-    The ticker name can either be the Symbol like (APPL or MSFT) or just the name of the company (Apple or Microsoft).
+    Entry point for typer app command.
     '''
-    return f'''
-          Provide a summary of the most recent stock performance for {ticker} in 2025.
-          Please include following key metrics:
-            - Closing price changes of last 14 days, 
-            - Analyst recommendations, 
-            - Relative Strenth Index (RSI)
-          Format the response using markdown and include tables where appropriate.
-          '''
+    asyncio.run(run_agent(ticker))
 
 if __name__ == "__main__":
-    message = create_message('SNOW')
-    asyncio.run(run_agent(message))
+    app()
