@@ -21,7 +21,7 @@ It also features tools for generating buy or sell suggestions based on analysts'
 
 This gif shows how this MCP server gets integrated to a **Agno AI App** seamlessly:
 
-![alt text](demo_img/agno_stock_mcp_demo.gif)
+![alt text](cookbook/demo_img/agno_stock_mcp_demo.gif)
 
 Another examaple with a customized **Streamlit client**:
 

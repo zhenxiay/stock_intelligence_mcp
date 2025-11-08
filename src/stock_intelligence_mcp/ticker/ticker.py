@@ -54,9 +54,9 @@ class CreateTicker():
         df_input = self.ticker.history(period="1mo")
 
         rsi_series = rsi(
-              close= df_input["Close"],
-              window= rsi_window,
-              fillna= False
+              close=df_input["Close"],
+              window=rsi_window,
+              fillna=False
               )
         rsi_index = rsi_series.iloc[-1]
 
@@ -78,8 +78,8 @@ class CreateTicker():
         df_input = self.ticker.history(period="1mo")
 
         tsi_series = tsi(
-              close= df_input["Close"],
-              fillna= True
+              close=df_input["Close"],
+              fillna=False
               )
         tsi_index = tsi_series.iloc[-1]
 
