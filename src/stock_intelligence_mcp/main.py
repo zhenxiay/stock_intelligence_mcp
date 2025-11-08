@@ -66,12 +66,12 @@ def main(
         return ticker.get_recommendations_rsi(rsi_window)
 
     @mcp.tool()
-    def technical_analysis_tsi(stock, tsi_window) -> dict:
+    def technical_analysis_tsi(stock) -> dict:
         """
         Get the recommendations based on the calculated True Strength Index (TSI).
         """
         ticker = CreateTicker(stock)
-        return ticker.get_recommendations_tsi(tsi_window)
+        return ticker.get_recommendations_tsi()
 
     @mcp.tool()
     def technical_analysis_williams_r(stock) -> dict:

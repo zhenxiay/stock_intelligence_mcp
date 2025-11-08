@@ -38,7 +38,7 @@ async def run_agent(ticker: str) -> None:
         Please include following key metrics:
             - Closing price changes of last 14 days, 
             - Analyst recommendations, 
-            - Technical indicators such as RSI, TSI, and Williams %R.
+            - Technical indicators such as RSI and Williams %R.
         Format the response using markdown and include tables where appropriate.
         '''
 

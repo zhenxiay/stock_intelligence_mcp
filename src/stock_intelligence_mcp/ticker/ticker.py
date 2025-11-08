@@ -70,22 +70,20 @@ class CreateTicker():
 
         return json_output(output)
     
-    def get_recommendations_tsi(self, tsi_window):
+    def get_recommendations_tsi(self):
         '''
         Calculate TSI (True Strength Index) and return recommendation based on TSI value.
         '''
-        tsi_window = preprocess_rsi_input(tsi_window)
 
         df_input = self.ticker.history(period="1mo")
 
         tsi_series = tsi(
               close= df_input["Close"],
-              window= tsi_window,
               fillna= True
               )
         tsi_index = tsi_series.iloc[-1]
 
-        output = {f"tsi_{tsi_window}": tsi_index}
+        output = {f"tsi_index": tsi_index}
 
         return json_output(output)
     
