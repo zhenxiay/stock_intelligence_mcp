@@ -30,10 +30,15 @@ async def run_agent(ticker: str) -> None:
     
     message = f'''
         Provide a summary of the most recent stock performance for {ticker} in 2025.
+
+        First provide a brief overview of the company's business.
+
+        Then analyze the stock performance using data retrieved from the MCP server.
+        
         Please include following key metrics:
             - Closing price changes of last 14 days, 
             - Analyst recommendations, 
-            - Relative Strenth Index (RSI)
+            - Technical indicators such as RSI, TSI, and Williams %R.
         Format the response using markdown and include tables where appropriate.
         '''
 

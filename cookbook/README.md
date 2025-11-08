@@ -57,8 +57,8 @@ uv run cookbook/example_agno_os.py --ticker 'Snowflake'
 
 ## Demo
 
+The follwoing gif shows the outcome of this cookbook file.
+
+Check the demo_img folder for more details!
+
 ![alt text](demo_img/agno_stock_mcp_demo.gif)
-
-![alt text](demo_img/image.png)
-
-![alt text](demo_img/image2.png)

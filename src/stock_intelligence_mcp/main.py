@@ -32,6 +32,14 @@ def main(
         name=name,
         port=port
         )
+    
+    @mcp.tool()
+    def get_company_info(stock) -> dict:
+        """
+        Get company business summary for the stock asked in the question.
+        """
+        ticker = CreateTicker(stock)
+        return ticker.get_company_info()
 
     @mcp.tool()
     def get_closing_stock_price(stock) -> dict:
@@ -56,6 +64,22 @@ def main(
         """
         ticker = CreateTicker(stock)
         return ticker.get_recommendations_rsi(rsi_window)
+
+    @mcp.tool()
+    def technical_analysis_tsi(stock, tsi_window) -> dict:
+        """
+        Get the recommendations based on the calculated True Strength Index (TSI).
+        """
+        ticker = CreateTicker(stock)
+        return ticker.get_recommendations_tsi(tsi_window)
+
+    @mcp.tool()
+    def technical_analysis_williams_r(stock) -> dict:
+        """
+        Get the recommendations based on the calculated Williams %R.
+        """
+        ticker = CreateTicker(stock)
+        return ticker.get_recommendations_williams_r()
 
     @mcp.tool()
     def get_sell_buy_advice(stock) -> dict:
