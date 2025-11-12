@@ -1,9 +1,7 @@
 name: Build and Release Python Wheel
 
 on:
-  push:
-    branch:
-      - 'main'
+  workflow_dispatch:
 
 jobs:
   build-and-upload-wheel:
