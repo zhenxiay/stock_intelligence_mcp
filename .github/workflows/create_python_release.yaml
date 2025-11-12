@@ -31,6 +31,8 @@ jobs:
         with:
           commit_message: "chore(release): bump version to ${{ env.NEW_VERSION }}"
           tagging_message: "v${{ env.NEW_VERSION }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_GITHUB }}
 
       - name: Build wheel with uv
         run: |
