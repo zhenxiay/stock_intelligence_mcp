@@ -8,15 +8,22 @@ It also features tools for generating buy or sell suggestions based on analysts'
 
 | Tool | Description |
 | :---- | :----------- |
+| `get_company_info` | Get the business summary of the given stock ticker. |
 | `get_closing_stock_price` | Get the closing price for a given stock ticker on a specific date. |
 | `get_14d_closing_stock_price` | Get the closing prices for the last 14 days for a given stock ticker. |
 | `technical_analysis_rsi` | Get RSI (Relative Strength Index) technical analysis for a stock ticker. |
+| `technical_analysis_tsi` | Get TSI (True Strength Index) technical analysis for a stock ticker. |
+| `technical_analysis_williams_r` | Get Williams %R technical analysis for a stock ticker. |
 | `get_sell_buy_advice` | Get buy/sell/hold advice for a stock ticker based on a summary of analysts recommendations. |
 | `get_recent_stock_news` | Get the most recent news articles for a stock ticker. |
 
 ## 💻 Demo
 
-The screenshot below demonstrates the usage of this server in a customized Streamlit client:
+This gif shows how this MCP server gets integrated to a **Agno AI App** seamlessly:
+
+![alt text](cookbook/demo_img/agno_stock_mcp_demo.gif)
+
+Another examaple with a customized **Streamlit client**:
 
 ![alt text](https://github.com/zhenxiay/stock_intelligence_mcp/blob/dev/mcp_si_server_demo.png?raw=true)
 
@@ -64,13 +71,20 @@ The server offers a CLI interface for the start.
 Run the following command to check the availiable parameters:
 
 ```bash
-uv run src/main.py --help
+export PYTHONPATH=./src
+uv run src/stock_intelligence_mcp/main.py --help
+```
+
+```powershell
+$env:PYTHONPATH=".\src"
+uv run src/stock_intelligence_mcp/main.py
 ```
 
 An example of starting the server with port 8008, streamable-http as transport and example_server as name:
 
 ```bash
-uv run src/main.py --name example_server --port 8008 --transport streamable-http
+export PYTHONPATH=./src
+uv run src/stock_intelligence_mcp/main.py --name example_server --port 8008 --transport streamable-http
 ```
 
 ### 🧑‍💻 Option 2: Run with Docker/ k8s/ Helm chart
