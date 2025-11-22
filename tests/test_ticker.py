@@ -37,3 +37,16 @@ def test_get_recommendations_rsi_returns_valid_dict(mock_ticker):
         assert result is not None
         assert isinstance(json.loads(result), dict)
         assert "recommendation" in json.loads(result)["content"]
+
+def test_get_company_info():
+    """
+    Test that get_company_info function returns the correct output as expected.
+    """
+    # Create ticker
+    ticker = CreateTicker("SNOW")
+    
+    # Get result
+    result = ticker.get_company_info()
+    
+    # Assert
+    assert result is not None
