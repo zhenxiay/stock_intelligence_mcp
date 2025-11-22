@@ -7,7 +7,7 @@ The methods defined in this class are used as tools in the MCP server.
 import yfinance as yf
 from ta.momentum import rsi, tsi, williams_r
 from stock_intelligence_mcp.utils.input_preprocessor import preprocess_rsi_input
-from stock_intelligence_mcp.utils.output_preprocessor import json_output
+from stock_intelligence_mcp.utils.output_preprocessor import json_output, toon_output
 
 class CreateTicker():
     '''
@@ -26,7 +26,7 @@ class CreateTicker():
         '''
         info = self.ticker.info['longBusinessSummary']
 
-        return json_output({"company_info": info})
+        return toon_output({"company_info": info})
     
     def fetch_closing(self):
         """
@@ -132,4 +132,4 @@ class CreateTicker():
         for item in news
         ]
 
-        return json_output(result)
+        return toon_output(result)
