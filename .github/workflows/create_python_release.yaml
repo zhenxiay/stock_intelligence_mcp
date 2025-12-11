@@ -3,6 +3,9 @@ name: Build and Release Python Wheel
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build-and-upload-wheel:
     runs-on: ubuntu-latest

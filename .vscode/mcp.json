@@ -1,0 +1,7 @@
+{
+   "servers": {
+       "stock_intelligence": {
+           "url": "http://localhost:8000/mcp"
+       }
+   }
+}
