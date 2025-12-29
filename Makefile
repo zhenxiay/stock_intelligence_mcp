@@ -14,15 +14,6 @@ DOCKER_CONTAINER := mcp-server-stock
 PORT := 8000
 SERVER_NAME := StockIntelligence
 
-# Check if we're in a virtual environment or have uv
-ifdef UV
-    RUN_CMD := $(UV) run
-else ifdef VIRTUAL_ENV
-    RUN_CMD := python
-else
-    RUN_CMD := $(PYTHON) -m
-endif
-
 help: ## Display this help message
 	@echo "Available targets:"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}'
@@ -38,7 +29,7 @@ endif
 install: venv ## Install dependencies
 	@echo "Installing dependencies..."
 ifdef UV
-	@. $(VENV)/bin/activate && $(UV) sync
+	@$(UV) sync
 else
 	@. $(VENV)/bin/activate && pip install -e .
 endif
