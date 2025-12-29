@@ -1,4 +1,4 @@
-.PHONY: help venv install run run-http run-sse run-stdio docker-build docker-run clean test
+.PHONY: help venv install run run-http run-sse run-stdio docker-build docker-run docker-stop docker-clean clean test
 
 # Default target
 .DEFAULT_GOAL := help
@@ -43,13 +43,7 @@ else
 	@. $(VENV)/bin/activate && pip install -e .
 endif
 
-run: ## Run the server with default settings (SSE transport on port 8000)
-	@echo "Starting server with default settings (SSE transport on port $(PORT))..."
-ifdef UV
-	@export PYTHONPATH=./$(SRC_DIR) && $(UV) run $(MAIN_SCRIPT) --name $(SERVER_NAME) --port $(PORT) --transport sse
-else
-	@export PYTHONPATH=./$(SRC_DIR) && . $(VENV)/bin/activate && python $(MAIN_SCRIPT) --name $(SERVER_NAME) --port $(PORT) --transport sse
-endif
+run: run-sse ## Run the server with default settings (SSE transport on port 8000)
 
 run-http: ## Run the server with streamable-http transport on port 8008
 	@echo "Starting server with streamable-http transport on port 8008..."

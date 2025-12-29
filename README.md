@@ -77,6 +77,8 @@ make run-http
 - `make run-stdio` - Run server with stdio transport
 - `make docker-build` - Build Docker image
 - `make docker-run` - Run Docker container
+- `make docker-stop` - Stop Docker container
+- `make docker-clean` - Clean up Docker container and image
 - `make test` - Run tests
 - `make clean` - Clean up virtual environment and cache files
 
