@@ -1,6 +1,6 @@
 [project]
 name = "stock_intelligence_mcp"
-version = "0.1.0"
+version = "0.1.1"
 authors = [{ name = "Zhenxiao Yu", email = "yu.zhenxiao.yz@gmial.com" }]
 description = "A Model Context Protocol (MCP) server which allows AI agents to interact with Yahoo Finance."
 readme = "README.md"
