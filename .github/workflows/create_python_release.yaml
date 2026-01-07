@@ -2,6 +2,11 @@ name: Build and Release Python Wheel
 
 on:
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (e.g., v1.0.0)'
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -23,6 +28,7 @@ jobs:
       - name: Upload wheel to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ inputs.tag }}
           files: dist/*.whl
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_GITHUB }}
