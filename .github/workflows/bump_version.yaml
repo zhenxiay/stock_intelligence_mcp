@@ -1,0 +1,32 @@
+name: Update Python Package Version
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-package-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+   
+      - name: Install uv
+        run: |
+          uses: astral-sh/setup-uv@v1
+
+      - name: Bump package version
+        run: |
+          uv version --bump patch
+          NEW_VERSION=$(uv version | awk '{print $2}')
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+
+      - name: Create Release Commit and Tag
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(release): bump version to ${{ env.NEW_VERSION }}"
+          tagging_message: "v${{ env.NEW_VERSION }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_GITHUB }}
