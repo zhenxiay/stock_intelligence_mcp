@@ -44,7 +44,43 @@ Check out the *Connect to the Server* section for more details!
 
 ## 🚀 Getting Started
 
-To start this server, you can either clone this repository and run the server with python, or use the Docker image in the repo.
+To start this server, you can either clone this repository and run the server with python, use the Makefile for convenience, or use the Docker image in the repo.
+
+### 🎯 Quick Start with Makefile (Recommended)
+
+The easiest way to get started is using the provided Makefile:
+
+```bash
+# Clone the repository
+git clone https://github.com/zhenxiay/stock_intelligence_mcp.git
+cd stock_intelligence_mcp
+
+# View all available commands
+make help
+
+# Create virtual environment and install dependencies
+make install
+
+# Run the server (default: SSE transport on port 8000)
+make run
+
+# Or run with streamable-http transport on port 8008
+make run-http
+```
+
+**Available Makefile targets:**
+- `make help` - Display all available commands
+- `make install` - Set up virtual environment and install dependencies
+- `make run` - Run server with SSE transport (default, port 8000)
+- `make run-http` - Run server with streamable-http transport (port 8008)
+- `make run-sse` - Run server with SSE transport (port 8000)
+- `make run-stdio` - Run server with stdio transport
+- `make docker-build` - Build Docker image
+- `make docker-run` - Run Docker container
+- `make docker-stop` - Stop Docker container
+- `make docker-clean` - Clean up Docker container and image
+- `make test` - Run tests
+- `make clean` - Clean up virtual environment and cache files
 
 ### 🧑‍💻 Option 1: Run with python (using uv)
 
