@@ -84,6 +84,12 @@ An example of starting the server with port 8008, streamable-http as transport a
 uv run src/stock_intelligence_mcp/main.py --name example_server --port 8008 --transport streamable-http
 ```
 
+You can also use the predefined Makefile to run the server with port 8000, streamable-http on your localhost:
+
+```bash
+make start-mcp
+```
+
 ### 🧑‍💻 Option 2: Run with Docker/ k8s/ Helm chart
 
 ❗Make sure that Docker engine/ a k8s cluster (minikube/ kind etc.)/ Helm is installed on your PC.
