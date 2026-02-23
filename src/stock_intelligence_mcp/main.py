@@ -2,10 +2,16 @@
 '''
 This is the entrypoint to the Stock Intelligence MCP server.
 '''
+import os
+import sys
 from mcp.server.fastmcp import FastMCP
 import typer
 from stock_intelligence_mcp.ticker.ticker import CreateTicker
 
+# Add src to path to import our modules
+sys.path.append(os.path.join(os.path.dirname(__file__), "..", "src"))
+
+# Initialize Typer app
 app = typer.Typer()
 
 @app.command()
