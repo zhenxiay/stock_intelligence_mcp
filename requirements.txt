@@ -1,0 +1,2 @@
+# This file is used to run this mcp server as a databricks app only
+uv

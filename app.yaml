@@ -1,0 +1,8 @@
+# This is a YAML file for setting up the mcp server as a databricks app
+command: [
+    'uv',
+    'run',
+    'mcp-server',
+    '--transport',
+    'streamable-http'
+  ]
