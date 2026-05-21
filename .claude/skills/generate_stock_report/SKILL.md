@@ -28,22 +28,32 @@ Before writing the report, first fetch following key metrics of the selected sto
 - Summary of Analyst Recommendations
 
 **Availiable Toolkit**
-The key metrics mentioned above can be retrieved with the MCP server `stock_intelligence_mcp`. This server is usually availiable over the url `http://localhost:8000/mcp`.
 
-The documentation of this MCP server can be reviewed here: `https://raw.githubusercontent.com/zhenxiay/stock_intelligence_mcp/refs/heads/main/README.md`
-
----
+The key metrics mentioned above can be retrieved with the MCP server `stock_intelligence_mcp`. This server is usually available over the url `http://localhost:8000/mcp`.
 
 ### Phase 2: Generate Analysis Report
 
 Generate the analysis report based on the data retrieved from previous phase.
 
 **Output Instruction:**
+
 Please include following key metrics in the report:
     - Short description of company's business,
     - Closing price changes of last 14 days, 
     - Analyst recommendations, 
-    - Technical indicators such as Relative Strength Index (RSI), True Strength Index (TSI) and Williams %R.
-Format the response using markdown and include tables where appropriate.
+    - Technical indicators such as Relative Strength Index (RSI) and Williams %R.
+
+Visualize the report with a **html page**.
+
+Take this page as template: `https://thariqs.github.io/html-effectiveness/11-status-report.html`
+
+Ask user's preference regarding the color scheme of the report. You can use the following color schemes:
+- Light: #ffffff (background), #000000 (text)
+- Dark: #000000 (background), #ffffff (text)
+- Blue: #e0f7fa (background), #006064 (text)
+
+### Phase 3: Presentation
+
+**Display the html page** in the browser as the agent's final answer.
 
 ---
